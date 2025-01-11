@@ -33,8 +33,11 @@ const handleError = (error) => {
         [error.POSITION_UNAVAILABLE]: "Position unavailable. Check your network or GPS.",
         [error.TIMEOUT]: "Location request timed out. Try again.",
     };
-    document.getElementById('status').textContent = errorMessages[error.code] || "An unknown error occurred.";
+    const errorMessage = errorMessages[error.code] || "An unknown error occurred.";
+    console.error(errorMessage);
+    document.getElementById('status').textContent = errorMessage;
 };
+
 
 if (navigator.geolocation) {
     // Initialize the map once geolocation is supported
